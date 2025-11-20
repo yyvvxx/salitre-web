@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salitre Restaurante - Puerto de Cangas | Pescado Fresco y Vistas al Mar</title>
+    <meta name="description" content="Restaurante Salitre en el Puerto de Cangas de Morrazo. Especialidad en pescado fresco, mariscos y arroces con vistas al mar. Terraza cubierta. Reservas: 634 24 28 06">
+    <meta name="keywords" content="restaurante cangas, puerto cangas, pescado fresco, mariscos, arroces, salitre, morrazo, terraza con vistas">
+    <meta name="author" content="Salitre Restaurante">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="Salitre Restaurante - Puerto de Cangas">
+    <meta property="og:description" content="Especialidad en pescado fresco, mariscos y arroces con vistas al mar">
+    <meta property="og:type" content="restaurant">
+    <meta property="og:url" content="https://www.salitrestaurante.com">
+    <meta property="og:image" content="https://www.salitrestaurante.com/img/og-image.jpg">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Schema.org para restaurante -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Salitre Restaurante",
+        "image": "https://www.salitrestaurante.com/img/logo.jpg",
+        "telephone": "+34634242806",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cangas",
+            "addressRegion": "Galicia",
+            "streetAddress": "Puerto de Cangas de Morrazo"
+        },
+        "servesCuisine": "Pescado fresco, mariscos, arroces",
+        "priceRange": "€€"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0a2e38;
+            --primary-light: #1a4b58;
+            --secondary: #2a9d8f;
+            --accent: #e9c46a;
+            --text: #264653;
+            --text-light: #5f7c8a;
+            --background: #f8f9fa;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --border: rgba(38, 70, 83, 0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --menu-bg: #e8f5e9;
+            --success: #2a9d8f;
+            --error: #e76f51;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* NAVEGACIÓN */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Redes sociales en menú */
+        .social-nav {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+            padding-left: 1rem;
+            border-left: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .social-nav a {
+            font-size: 1.3rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            transition: var(--transition);
+            color: white;
+        }
+
+        .social-nav a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* HERO VIDEO */
+        .hero-video {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 46, 56, 0.7) 0%, rgba(42, 157, 143, 0.3) 100%);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -30%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            background: #f4a261;
+        }
+
+        /* PLATOS DESTACADOS */
+        .featured-dishes {
+            background: var(--background);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .featured-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .featured-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .featured-video-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .featured-video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--primary-light);
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* MENÚ COMPLETO */
+        .menu {
+            padding: 5rem 0;
+            background: var(--background);
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .menu-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .menu-tab:hover {
+            border-color: var(--accent);
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: block;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .menu-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .menu-item-price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-item-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* SECCIÓN RESERVAS NUEVA */
+        .reservations {
+            padding: 5rem 0;
+            background: var(--primary);
+            color: white;
+        }
+
+        .reservations-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .reservation-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .reservation-subtitle {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+
+        .reservation-cta-box {
+            background: var(--primary-light);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .reservation-cta-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .reservation-cta-box p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .reservation-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .reservation-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f4a261;
+        }
+
+        .reservation-button i {
+            font-size: 1.3rem;
+        }
+
+        /* HORARIOS */
+        .hours {
+            background: var(--background);
+            padding: 5rem 0;
+        }
+
+        .hours-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .day-card {
+            background: var(--card-bg);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .day-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .day-card p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .day-card.closed {
+            border-color: var(--error);
+        }
+
+        .day-card.closed h4 {
+            color: var(--error);
+        }
+
+        .day-card.closed p {
+            color: var(--error);
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* BOTÓN WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: var(--shadow-hover);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .social-nav {
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .featured-videos,
+            .menu-tabs {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVEGACIÓN -->
+    <nav aria-label="Menú principal">
+        <div class="nav-container">
+            <div class="logo" aria-label="Salitre Restaurante">Salitre</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio" aria-label="Ir a inicio">Inicio</a></li>
+                <li><a href="#menu" aria-label="Ver menú">Menú</a></li>
+                <li><a href="#reservas" aria-label="Hacer reserva">Reservas</a></li>
+                <li><a href="#horarios" aria-label="Ver horarios">Horarios</a></li>
+                <li><a href="#ubicacion" aria-label="Ver ubicación">Ubicación</a></li>
+                <li class="social-nav" aria-label="Redes sociales">
+                    <a href="https://www.instagram.com/restaurante_salitre_/" target="_blank" aria-label="Instagram Salitre">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/people/Salitre-Bar-restaurante/61575270476152/" target="_blank" aria-label="Facebook Salitre">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú móvil" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO VIDEO -->
+    <section class="hero-video" id="inicio" aria-label="Sección principal">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="hero-video-bg" poster="img/hero-poster.jpg">
+                <source src="fotos salitre visuallstudio/1109.mp4" type="video/mp4">
+                <img src="img/hero-fallback.jpg" alt="Vistas al mar del puerto de Cangas - Salitre Restaurante">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Salitre</h1>
+            <p class="hero-subtitle">Restaurante en el Puerto de Cangas de Morrazo</p>
+            <div class="hero-features">
+                <span class="feature-tag">🌊 Vistas al mar</span>
+                <span class="feature-tag">🍽️ Terraza cubierta</span>
+                <span class="feature-tag">🐟 Productos frescos</span>
+            </div>
+            <a href="#reservas" class="cta-button" aria-label="Reservar mesa">Reservar Mesa</a>
+        </div>
+    </section>
+
+    <!-- PLATOS DESTACADOS -->
+    <section class="featured-dishes" aria-label="Platos destacados">
+        <div class="featured-container">
+            <div class="featured-header">
+                <h2 class="featured-title">Platos Destacados</h2>
+                <p class="featured-subtitle">Preparaciones especiales de nuestra cocina</p>
+            </div>
+            
+            <div class="featured-videos">
+                <article class="featured-video-item">
+                    <div class="video-wrapper">
+                        <video autoplay muted loop playsinline poster="img/hamburguesa-poster.jpg">
+                            <source src="fotos salitre visuallstudio/IMG_0921 copia.mp4" type="video/mp4">
+                            <img src="img/hamburguesa.jpg" alt="Hamburguesa gourmet de ternera gallega - Salitre Restaurante">
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4>La Asturiana</h4>
+                        <p>Hamburguesa de 250gr de ternera gallega madurada a la brasa, pan brioche casero, salsa de queso afuegal-pitu, mayonesa de tuetano, mermelada de manzana verde y una montaña de cebolla frita casera crujiente. Acompañada de patatas fritas caseras y salsa de la casa.</p>
+                    </div>
+                </article>
+                
+                <article class="featured-video-item">
+                    <div class="video-wrapper">
+                        <video autoplay muted loop playsinline poster="img/arroz-secreto-poster.jpg">
+                            <source src="fotos salitre visuallstudio/IMG_0866.mp4" type="video/mp4">
+                            <img src="img/arroz-secreto.jpg" alt="Arroz de secreto ibérico con foie y rebozuelos - Salitre Restaurante">
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4>Arroz de Secreto con Foie y Rebozuelos</h4>
+                        <p>Arroz cremoso elaborado con secreto ibérico de bellota, foie gras de pato, rebozuelos frescos de temporada y un toque de trufa negra. Mínimo 2 personas.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENÚ COMPLETO -->
+    <section class="menu" id="menu" aria-label="Menú del restaurante">
+        <div class="menu-container">
+            <div class="menu-header">
+                <h2 class="menu-title">Nuestra Carta</h2>
+                <p>Descubre nuestra selección de platos preparados con productos frescos del día</p>
+            </div>
+            
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="entradas">Entradas / Tapas</button>
+                <button class="menu-tab" data-category="bivalvos">Bivalvos</button>
+                <button class="menu-tab" data-category="crustaceos">Crustáceos</button>
+                <button class="menu-tab" data-category="arroces">Arroces</button>
+                <button class="menu-tab" data-category="platos">Platos Principales</button>
+                <button class="menu-tab" data-category="postres">Postres</button>
+                <button class="menu-tab" data-category="vinos">Vinos</button>
+            </div>
+
+            <div class="menu-content">
+                <!-- Entradas / Tapas -->
+                <div class="menu-category active" id="entradas">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tortilla de patata y cebolla caramelizada</h3>
+                                <span class="menu-item-price">8,00€</span>
+                            </div>
+                            <p class="menu-item-description">La hacemos al momento con huevos ecológicos, patata gallega amarilla y cebolla caramelizada.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tortilla de patata y choco de la ría</h3>
+                                <span class="menu-item-price">10,00€</span>
+                            </div>
+                            <p class="menu-item-description">Con choco de la ría y su tinta, huevos ecológicos y patata gallega amarilla. Se sirve con alioli de ajonegro.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Torto con atún rojo, huevo frito y tamarindo</h3>
+                                <span class="menu-item-price">5,50€</span>
+                            </div>
+                            <p class="menu-item-description">Una unidad de torto de maíz frito con tacos de atún rojo marinado en tamarindo y espuma de huevo frito.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Niguiri de Raya</h3>
+                                <span class="menu-item-price">3,70€</span>
+                            </div>
+                            <p class="menu-item-description">Una unidad de falso nigiri crujiente con raya guisada al estilo tradicional con un toque ligero de cacao.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Cangrejo crujiente con mango y lima</h3>
+                                <span class="menu-item-price">8,50€</span>
+                            </div>
+                            <p class="menu-item-description">Una unidad de cangrejo de concha blanda en tempura ligera con puré de mango picante y mayonesa de lima.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Buñuelos cremosos de pulpo</h3>
+                                <span class="menu-item-price">10,00€</span>
+                            </div>
+                            <p class="menu-item-description">Con crema de aguacate y lima, mayonesa ligeramente picante de ajada y cebolla frita crujiente. (8 unidades)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Empanadillas de secreto ibérico de bellota</h3>
+                                <span class="menu-item-price">10,00€</span>
+                            </div>
+                            <p class="menu-item-description">Con mermelada de pimiento de padrón ligeramente picante y mayonesa ahumada. (4 unidades)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Saquitos de vaca madurada</h3>
+                                <span class="menu-item-price">12,00€</span>
+                            </div>
+                            <p class="menu-item-description">Crujientes, rellenos de vaca madurada, salsa melosa de vaca, salsa tártara y chimichurri casero. (6 unidades)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ensalada de endivias a la brasa</h3>
+                                <span class="menu-item-price">12,00€</span>
+                            </div>
+                            <p class="menu-item-description">Con jamón de Jabugo D.O.P, higos y mermelada de tomate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bivalvos -->
+                <div class="menu-category" id="bivalvos">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Navajas</h3>
+                                <span class="menu-item-price">16,00€</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa con emulsión de aceite de ajo, limón y perejil.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Volandeiras gallegas</h3>
+                                <span class="menu-item-price">14,00€</span>
+                            </div>
+                            <p class="menu-item-description">Ligeramente abiertas a la brasa con aceite de ajo.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Berberechos XXL</h3>
+                                <span class="menu-item-price">18,00€</span>
+                            </div>
+                            <p class="menu-item-description">Abiertos ligeramente a la brasa y terminados con aceite de ajo.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Vieiras del pacífico</h3>
+                                <span class="menu-item-price">22,00€</span>
+                            </div>
+                            <p class="menu-item-description">Marcadas a la plancha y terminadas con una picada de tomate, cebolla, cilantro, lima y toques mexicanos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crustáceos -->
+                <div class="menu-category" id="crustaceos">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Gamba blanca S/M</h3>
+                                <span class="menu-item-price">S/P</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa, preguntar disponibilidad. Precio según mercado.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Langostino de Sanlúcar</h3>
+                                <span class="menu-item-price">S/P</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa, preguntar disponibilidad. Precio según mercado.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Gamba roja o gamba alistada S/M</h3>
+                                <span class="menu-item-price">S/P</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa, preguntar disponibilidad. Precio según mercado.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Carabinero</h3>
+                                <span class="menu-item-price">S/P</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa, preguntar disponibilidad. Precio según mercado.</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">Precios según talla y disponibilidad del mercado. Consultar servicio.</p>
+                </div>
+
+                <!-- Arroces -->
+                <div class="menu-category" id="arroces">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Choco de la ría con alcachofas y ajo negro</h3>
+                                <span class="menu-item-price">20,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Arroz de choco de la ría con alioli de ajo negro y flor de alcachofa crujiente.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Pescados y mariscos del día</h3>
+                                <span class="menu-item-price">24,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Arroz de pescados y mariscos de la rula de Cangas o Vigo.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Carabineros a la brasa</h3>
+                                <span class="menu-item-price">26,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Preparamos una "esencia" con sus cabezas y lo agregamos al caldo de cocción, presentamos con 1 carabinero grande y uno pequeño.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Secreto de bellota, rebozuelos y foie</h3>
+                                <span class="menu-item-price">28,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Arroz de secreto ibérico de bellota con rebozuelos salteados a la llama y foie grass marcado a la plancha, una mezcla espectacular.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Secreto ibérico de bellota (Min. 2 raciones)</h3>
+                                <span class="menu-item-price">22,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Arroz de secreto ibérico de bellota a la brasa con puntos de mermelada de manzana verde.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Rubia Gallega Madurada (Min. 2 raciones)</h3>
+                                <span class="menu-item-price">26,00€/Ración</span>
+                            </div>
+                            <p class="menu-item-description">Arroz de Chuleta de la raza Rubia Gallega, madurada un mínimo de 30 días. Hacemos un caldo con los restos de los huesos de los chuletones para la cocción del arroz y terminamos con la chuleta cocinada a la brasa presentada encima del arroz y unos pimientos del piquillo caramelizados para un toque dulce.</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">*Los arroces se elaboran con caldo casero y productos de proximidad. Tiempo de preparación: 25-30 minutos.</p>
+                </div>
+
+                <!-- Platos Principales -->
+                <div class="menu-category" id="platos">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Pulpo a la brasa</h3>
+                                <span class="menu-item-price">20,00€</span>
+                            </div>
+                            <p class="menu-item-description">Con parmentier de patata y mojo verde.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Escarapote o cabra</h3>
+                                <span class="menu-item-price">20,00€</span>
+                            </div>
+                            <p class="menu-item-description">Es un pescado de roca, lo preparamos frito entero rebozado con harina de arroz y acompañado con mayonesa de ajo asado y kimchie.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Pescados del día de proximidad</h3>
+                                <span class="menu-item-price">S/P</span>
+                            </div>
+                            <p class="menu-item-description">¿Cómo preparamos nuestros pescados? Simple, a la brasa. Utilizamos sus jugos para hacer un pilpil y lo emulsionamos con aceite de ajo. Acompañamos con patatas baby y bañamos todo con este maravilloso pilpil para potenciar sus sabores.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">La Asturiana</h3>
+                                <span class="menu-item-price">17,50€</span>
+                            </div>
+                            <p class="menu-item-description">Hamburguesa de 250g de vaca madurada a la brasa en pan brioche con crema de queso afuegal pitu (D.O.P), mermelada de manzana verde, mayonesa de tuetano y montaña de cebolla frita. Viene con patatas fritas.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Secreto ibérico de bellota</h3>
+                                <span class="menu-item-price">24,00€</span>
+                            </div>
+                            <p class="menu-item-description">A la brasa acompañado con patatas baby asadas y una crema de castañas.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Chuleta de vaca rubia Gallega</h3>
+                                <span class="menu-item-price">42,00€</span>
+                            </div>
+                            <p class="menu-item-description">Madurada mínimo 30 días a la brasa acompañada de patatas asadas y pimientos del piquillo caramelizados. (650g-700g)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Postres -->
+                <div class="menu-category" id="postres">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tarta de queso azul</h3>
+                                <span class="menu-item-price">7,00€</span>
+                            </div>
+                            <p class="menu-item-description">Tarta de queso azul al horno con helado de frutos rojos.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Tarta de chocolate</h3>
+                                <span class="menu-item-price">7,00€</span>
+                            </div>
+                            <p class="menu-item-description">Tarta de chocolate fundente con helado de mango picante.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Mousse de limón</h3>
+                                <span class="menu-item-price">7,00€</span>
+                            </div>
+                            <p class="menu-item-description">Mousse de limón y chocolate blanco con frutos secos garrapiñados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vinos -->
+                <div class="menu-category" id="vinos">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Godai</h3>
+                                <span class="menu-item-price">3€/Copa | 18€/Botella</span>
+                            </div>
+                            <p class="menu-item-description">Vino blanco fresco y aromático, con notas de manzana verde, cítricos y flores blancas. En boca es equilibrado, con acidez viva y final mineral.</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <h3 class="menu-item-title">Ladairo (Blanco)</h3>
+                                <span class="menu-item-price">2,50€/Copa | 15€/Botella</span>
+                            </div>
+                            <p class="menu-item-description">Blanco de Monterrei elaborado con uva Godello. Aromas a manzana, pera y flores blancas, con sutil toque mineral. En boca es fresco, untuoso y con final largo y equilibrado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVAS NUEVO SISTEMA -->
+    <section class="reservations" id="reservas" aria-label="Reservas">
+        <div class="reservations-container">
+            <h2 class="reservation-title">Reserva tu mesa</h2>
+            <p class="reservation-subtitle">Con vistas al mar, productos frescos y un servicio excepcional</p>
+            
+            <div class="reservation-cta-box">
+                <h3>📅 Agenda tu experiencia Salitre</h3>
+                <p>Selecciona el día y la hora que mejor te venga. Nuestro sistema de reservas te muestra en tiempo real la disponibilidad.</p>
+                
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0xfTRhtdsqV4ITggmjbrV-I2KdrohhadksfazPwccNOgTKAfdMw31tD8nwVkMyjLLUFtFbrO_R" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="reservation-button" 
+                   aria-label="Agendar reserva en Google Calendar">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Click para agendar tu reserva</span>
+                </a>
+                
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    <i class="fas fa-phone"></i> ¿Dudas? Llámanos al <strong>634 24 28 06</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIOS -->
+    <section class="hours" id="horarios" aria-label="Horarios de apertura">
+        <div class="hours-container">
+            <h2 class="menu-title">Horario</h2>
+            <div class="hours-grid">
+                <div class="day-card closed">
+                    <h4>Lunes</h4>
+                    <p>Cerrado</p>
+                </div>
+                <div class="day-card closed">
+                    <h4>Martes</h4>
+                    <p>Cerrado</p>
+                </div>
+                <div class="day-card">
+                    <h4>Miércoles</h4>
+                    <p>12:00 - 16:00</p>
+                    <p>19:30 - 23:30</p>
+                </div>
+                <div class="day-card">
+                    <h4>Jueves</h4>
+                    <p>12:00 - 16:00</p>
+                    <p>19:30 - 23:30</p>
+                </div>
+                <div class="day-card">
+                    <h4>Viernes</h4>
+                    <p>12:00 - 16:00</p>
+                    <p>19:30 - 23:30</p>
+                </div>
+                <div class="day-card">
+                    <h4>Sábado</h4>
+                    <p>12:00 - 16:00</p>
+                    <p>19:30 - 23:30</p>
+                </div>
+                <div class="day-card">
+                    <h4>Domingo</h4>
+                    <p>12:00 - 16:00</p>
+                    <p>19:30 - 23:30</p>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; color: var(--text-light);">
+                <i class="fas fa-info-circle"></i> Reservas recomendadas especialmente en fin de semana
+            </p>
+        </div>
+    </section>
+</section>
+<!-- SECCIÓN UBICACIÓN (INSERTAR ANTES DEL FOOTER) -->
+<section class="location" id="ubicacion" aria-label="Ubicación">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Ubicación</h2>
+            <p class="section-subtitle">Encuéntranos en el Puerto de Cangas de Morrazo</p>
+        </div>
+        
+        <div class="location-content">
+            <div class="location-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Dirección</h4>
+                        <p>Puerto deportivo sin número<br>36940 Cangas, Pontevedra</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Teléfono</h4>
+                        <p><a href="tel:+34634242806" style="color: var(--primary); text-decoration: none;">634 24 28 06</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div class="contact-details">
+                        <h4>Horario</h4>
+                        <p>Miércoles a Domingo<br>12:00-16:00 | 19:30-23:30</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🅿️</div>
+                    <div class="contact-details">
+                        <h4>Estacionamiento</h4>
+                        <p>Aparcamiento gratuito disponible en el puerto, a 1 minuto caminando.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="location-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.142293!2d-8.7834323!3d42.2601854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2f6136ac9e90c1%3A0xf1c2a82a7c7288a6!2sPuerto%20deportivo%20sin%20n%C3%BAmero%2C%2036940%20Cangas%2C%20Pontevedra!5e0!3m2!1ses!2ses!4v1234567890" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ESTILOS DE LA SECCIÓN UBICACIÓN (AÑADE ESTOS TAMBIÉN) */
+
+.location {
+    padding: 5rem 0;
+    background: var(--background);
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    min-width: 30px;
+}
+
+.contact-details h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.contact-details p {
+    color: var(--text-light);
+    margin: 0;
+}
+
+.contact-details a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-details a:hover {
+    color: var(--accent);
+}
+
+.location-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    min-height: 400px;
+}
+
+/* RESPONSIVE PARA UBICACIÓN */
+
+@media (max-width: 768px) {
+    .location-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .location-map {
+        min-height: 300px;
+        order: -1; /* El mapa primero en móvil */
+    }
+}
+</style>
+</section>
+
+    <!-- FOOTER -->
+    <footer id="ubicacion">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>&copy; 2025 Salitre Restaurante. Todos los derechos reservados.</p>
+                <p>Puerto de Cangas de Morrazo - 634 24 28 06</p>
+                <div class="social-links">
+                    <a href="https://wa.me/34634242806" target="_blank" aria-label="WhatsApp">💬</a>
+                    <a href="tel:+34634242806" aria-label="Teléfono">📞</a>
+                    <a href="https://www.instagram.com/restaurante_salitre_/" target="_blank" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/34634242806" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menú móvil
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = mobileMenuToggle.querySelector('i');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            const isActive = navLinks.classList.toggle('active');
+            mobileMenuToggle.setAttribute('aria-expanded', isActive);
+            menuIcon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.className = 'fas fa-bars';
+                mobileMenuToggle.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Tabs del menú
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuCategories = document.querySelectorAll('.menu-category');
+
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                menuTabs.forEach(t => t.classList.remove('active'));
+                menuCategories.forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const categoryId = tab.getAttribute('data-category');
+                document.getElementById(categoryId).classList.add('active');
+            });
+        });
+
+        // Animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(10, 46, 56, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--primary)';
+                nav.style.backdropFilter = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
